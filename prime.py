@@ -2,6 +2,7 @@ import time
 from functools import reduce
 from collections import Counter
 
+
 def primes(n):
     top = int(n**0.5)
     ps = {i for i in range(2, n + 1)}
@@ -12,6 +13,7 @@ def primes(n):
                     break
                 ps.discard(j)
     return ps
+
 
 def factors(n):
     r = n
@@ -34,9 +36,11 @@ def factors(n):
 
     return facts
 
+
 def power_str(fs):
-    f,p = fs
+    f, p = fs
     return str(f) + ('^{}'.format(p) if p>1 else '')
+
 
 def factor_str(fs):
     return ' * '.join([power_str(s) for s in fs])
@@ -55,13 +59,14 @@ def sundaram3(max_n):
         if initial > half:
             return [2] + list(filter(None, numbers))
 
+
 def main(n):
     start = time.time()
     fs = factors(n)
     end = time.time()
     print("prime factors of {}: {}".format(n, factor_str(fs)))
     print('time: {:.3f}\n'.format(end-start))
-    check = reduce(lambda a,b: a*b,[f**p for (f,p) in fs])
+    check = reduce(lambda a, b: a*b, [f**p for (f, p) in fs])
     assert check == n
 
 
@@ -71,18 +76,19 @@ def xtime(f, *args, **kws):
     etime = time.time()
     return etime - stime
 
+
 if __name__ == '__main__':
     #n = 13727732*89345*23244
     #main(n)
 
     stime = time.time()
-    s3=sundaram3(pow(10,3))
+    s3 = sundaram3(pow(10, 4))
     etime = time.time()
     sund = etime - stime
     print('sundaram3: {:f}'.format(sund))
 
     stime = time.time()
-    p=primes(pow(10,3))
+    p = primes(pow(10, 4))
     etime = time.time()
     prim = etime - stime
     print('primes: {:f}'.format(prim))
