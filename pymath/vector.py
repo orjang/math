@@ -1,5 +1,5 @@
 
-class vector(list):
+class Vector(list):
 
     def __init__(self, elements):
         super().__init__(elements)
@@ -10,8 +10,8 @@ class vector(list):
 
     def __add__(self, other):
         if isinstance(other, (int, float)):
-            return vector([a + other for a in self])
-        elif not isinstance(other, vector):
+            return Vector([a + other for a in self])
+        elif not isinstance(other, Vector):
             raise TypeError('vector can only be added to a number (float or int), or another vector')
 
         if self.dimensions != other.dimensions:
@@ -19,14 +19,14 @@ class vector(list):
 
         element_sums = [a + b for a, b in zip(self, other)]
 
-        return vector(element_sums)
+        return Vector(element_sums)
 
     def __mul__(self, other):
         if not isinstance(other, (int, float)):
             raise TypeError('vector can only be multiplied by a number (float or int)')
         element_prods = [other * e for e in self]
 
-        return vector(element_prods)
+        return Vector(element_prods)
 
     def __rmul__(self, other):
         return self * other
