@@ -4,7 +4,7 @@ from collections import Counter
 
 
 def primes(n):
-    top = int(n**0.5)
+    top = int(n**0.5) + 1
     ps = {i for i in range(2, n + 1)}
     for i in range(2, top):
         if i in ps:
@@ -32,14 +32,14 @@ def factors(n):
 
     if r > 1:
         fs[r] = 1
-    facts = [(f,p) for f,p in sorted(fs.items(), key=lambda f: f[0])]
+    facts = [(f, p) for f, p in sorted(fs.items(), key=lambda f: f[0])]
 
     return facts
 
 
 def power_str(fs):
     f, p = fs
-    return str(f) + ('^{}'.format(p) if p>1 else '')
+    return str(f) + ('^{}'.format(p) if p > 1 else '')
 
 
 def factor_str(fs):
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     etime = time.time()
     prim = etime - stime
     print('primes: {:f}'.format(prim))
-    print('ratio: {:f}'.format(prim/sund))
+    #print('ratio: {:f}'.format(prim/sund))
 
     print('s3:{}'.format(sorted(s3)))
     print('p :{}'.format(sorted(p)))
