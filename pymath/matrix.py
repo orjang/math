@@ -208,9 +208,9 @@ class Matrix(object):
         rows, cols = lhs.shape.rows, rhs.shape.columns
 
         m = Matrix(rows, cols)
+        inner = lhs.shape.columns
         for r in range(rows):
             for c in range(cols):
-                inner = lhs.shape.columns
                 m[r, c] = sum([lhs[r, i] * rhs[i, c] for i in range(inner)])
 
         return m
